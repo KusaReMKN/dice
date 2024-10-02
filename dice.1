@@ -1,0 +1,55 @@
+'\"
+.Dd October 3, 2024
+.Dt DICE 6
+.Os
+.Sh NAME
+.Nm dice
+.Nd roll virtual dice
+.Sh SYNOPSIS
+.Nm
+.Op Ar #d# ...
+.Sh DESCRIPTION
+The
+.Nm
+utility rolls virtual dice as specified by the arguments.
+The dice format should follow
+.Ql #d# ,
+where the first number represents the number of dice to roll
+and the second number represents the number of faces on each dice.
+For example,
+.Ql 1d100
+rolls one 100-sided dice,
+while
+.Ql 3d6
+rolls three 6-sided dice.
+.Pp
+The
+.Nm
+utility outputs the result of each roll on each line,
+followed by the sum of all rolls.
+.Sh IMPLEMENTATION NOTES
+The
+.Nm
+utility seeds the random number generator using
+.Fn getentropy .
+.Sh EXAMPLES
+The following command rolls one 100-sided dice,
+one 10-sided dice,
+three 6-sided dice,
+and two 6-sided dice:
+.Bd -literal -offset indent
+$ dice 1d100 1d10 3d6 2d6
+57
+5
+1 6 2
+6 4
+81
+.Ed
+.Sh EXIT STATUS
+.Ex -std
+.Sh SEE ALSO
+.Xr getentropy 3 ,
+.Xr random 3
+.Sh BUGS
+The period of random-number generator
+is approximately 16 \(mu (2^32 \(mi 1).
