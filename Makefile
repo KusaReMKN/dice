@@ -1,5 +1,5 @@
 TARGET=	dice
-OBJS=	dice.o
+OBJS=	dice.o stack.o
 
 CC=	cc
 RM=	rm -f
